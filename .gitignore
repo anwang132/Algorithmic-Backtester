@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# uv / venv
+.venv/
+uv.lock.bak
+
+# Project data & outputs
+data/cache/*
+!data/cache/.gitkeep
+outputs/results/*
+outputs/charts/*
+!outputs/results/.gitkeep
+!outputs/charts/.gitkeep
+
+# Secrets
+.env
+
+# OS
+.DS_Store

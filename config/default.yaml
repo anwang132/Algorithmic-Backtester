@@ -1,0 +1,65 @@
+# Algorithmic Trading Backtester — default configuration
+#
+# Dates: 4-year in-sample window used to select the pair, hedge ratio, and
+# strategy hyperparameters; 2-year out-of-sample window used to evaluate the
+# frozen strategy with zero re-fitting.
+
+universe:
+  - AAPL
+  - MSFT
+  - GOOGL
+  - AMZN
+  - META
+  - JPM
+  - BAC
+  - WFC
+  - GS
+  - MS
+  - V
+  - MA
+  - KO
+  - PEP
+  - WMT
+  - COST
+  - MCD
+  - XOM
+  - CVX
+  - COP
+  - HD
+  - LOW
+  - JNJ
+  - UNH
+  - PFE
+
+dates:
+  in_sample_start: "2018-01-01"
+  in_sample_end: "2021-12-31"
+  out_of_sample_start: "2022-01-01"
+  out_of_sample_end: "2023-12-31"
+
+capital:
+  initial: 100000.0
+  risk_pct_per_leg: 0.95  # target dollar exposure per leg = equity * this fraction
+
+costs:
+  commission_fixed: 1.0       # flat ticket fee per order, USD
+  commission_per_share: 0.005 # USD per share
+  slippage_bps: 5.0           # basis points applied against the fill price
+
+cointegration:
+  p_value_threshold: 0.05
+  min_observations: 252  # ~1 trading year minimum overlap to run the test
+
+strategy:
+  z_window: 30
+  entry_z: 2.0
+  exit_z: 0.5
+  stop_z: 4.0
+  param_grid:
+    z_window: [15, 30, 45, 60]
+    entry_z: [1.5, 2.0, 2.5]
+    exit_z: [0.25, 0.5, 0.75]
+
+output:
+  results_dir: "outputs/results"
+  charts_dir: "outputs/charts"

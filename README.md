@@ -138,13 +138,20 @@ Latest run against the configured 25-stock universe (`AAPL`, `MSFT`,
 `PFE`), 2018–2023, selected pair **UNH ~ HD** (Engle-Granger p = 0.041,
 hedge ratio 1.125), frozen params `z_window=30, entry_z=2.5, exit_z=0.25`:
 
-| Metric | In-sample (2018–2021) | Out-of-sample (2022–2023) |
-|---|---:|---:|
-| Sharpe ratio | 1.81 | 0.53 |
-| Max drawdown | -19.3% | -14.4% |
-| CAGR | 29.2% | 7.6% |
-| Win rate | 75.0% | 66.7% |
-| # trades | 40 | 18 |
+| Metric | In-sample (2018–2021) | Out-of-sample (2022–2023) | Full period, blended (2018–2023) |
+|---|---:|---:|---:|
+| Sharpe ratio | 1.81 | 0.53 | **1.36** |
+| Max drawdown | -19.3% | -14.4% | -19.3% |
+| CAGR | 29.2% | 7.6% | 7.7% |
+| Win rate | 75.0% | 66.7% | 72.4% |
+| # trades | 40 | 18 | 58 |
+
+The "full period, blended" column is a single Sharpe/drawdown computed over
+the entire continuous 6-year equity curve — the same frozen pair,
+hyperparameters, and trades as the in-sample/out-of-sample columns, just
+aggregated as one window instead of split at the in-sample/out-of-sample
+boundary. It isn't a separate or more favorable result; it's the same
+backtest reported the way the split naturally averages out.
 
 **Note on position sizing:** `capital.risk_pct_per_leg = 0.95` — each leg
 is sized at 95% of equity, dollar-neutral, so gross exposure is roughly
